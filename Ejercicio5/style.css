@@ -1,0 +1,20 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    background-color: aquamarine;
+    display: flexbox;
+    text-align: center;
+}
+
+label{
+    display: flex;
+    justify-content: center;
+}
+
+input{
+    margin-bottom: 3px;
+    border-radius: 5px;
+}
+
+button{
+    margin: 10px;
+}
