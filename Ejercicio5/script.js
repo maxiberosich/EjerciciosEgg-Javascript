@@ -34,22 +34,33 @@ input2.id = "numero2";
 input2.type = "number";
 
 
-// OPERACION
-const label3 = document.createElement("label");
-label3.textContent = `Ingrese la operacion  `;
-label3.setAttribute("for","operacion");
-
-const input3 = document.createElement("input");
-input3.id = "operacion";
-input3.type = "text";
 
 
 div.appendChild(label);
 div.appendChild(input);
 div.appendChild(label2);
 div.appendChild(input2);
-div.appendChild(label3);
-div.appendChild(input3);
+
+// CREACION DE LOS DIFERENTES INPUTS DE TIPO RADIO
+const opciones = [
+    {nombre: `suma`, etiqueta: "Suma"},
+    {nombre: `resta`, etiqueta: "Resta"},
+    {nombre: `division`, etiqueta: "Division"},
+    {nombre: `multiplicacion`, etiqueta: "Multiplicacion"}
+]
+
+for (const opc of opciones) {
+    const inputInfo = document.createElement("input");
+    inputInfo.name = "operacion";
+    inputInfo.type = "radio";
+    inputInfo.value = opc.nombre;
+
+    const label3 = document.createElement("label");
+    label3.textContent = opc.etiqueta;
+
+    div.appendChild(label3);
+    div.appendChild(inputInfo);
+}
 
 body.appendChild(div);
 
@@ -58,13 +69,6 @@ const boton = document.createElement("button");
 boton.textContent = `Enviar`;
 body.appendChild(boton);
 
-const texto = document.createElement("p");
-texto.textContent = `Ingrese la letra de la operacion que quiera
-S - SUMAR
-R - RESTAR
-M - MULTIPLICAR
-D - DIVIDIR`;
-body.appendChild(texto);
 
 boton.addEventListener("click",()=>{
     calculadora();
@@ -73,27 +77,30 @@ boton.addEventListener("click",()=>{
 let calculadora = () =>{
     let n1 = parseInt(input.value);
     let n2 = parseInt(input2.value);
-    let op = input3.value;
-    switch (op) {
-        case "s":
-        case "S":
-            alert(`El resultado de la suma es ${n1 + n2} `);
-            break;
-        case "r":
-        case "R":
-            alert(`El resultado de la resta es ${n1-n2}`);
-            break;
-        case "d":
-        case "D":
-            alert(`El resultado de la division es ${n1/n2}`);
-            break;
-        case "m":
-        case "M":
-            alert(`El resultado de la multiplicacion es ${n1*n2}`);
-            break;
-        default:
-            alert("Debe ingresar una opcion valida");
-            break;
+
+    const opcio = document.querySelectorAll('input[type="radio"]');
+    for(const opci of opcio){
+        if(opci.checked){
+            const opcS = opci.value;
+            switch (opcS) {
+                case "suma":
+                    alert(`El resultado de la suma es ${n1 + n2} `);
+                    break;
+                case "resta":
+                    alert(`El resultado de la resta es ${n1-n2}`);
+                    break;
+                case "division":
+                    alert(`El resultado de la division es ${n1/n2}`);
+                    break;
+                case "multiplicacion":
+                    alert(`El resultado de la multiplicacion es ${n1*n2}`);
+                    break;
+                default:
+                    alert("Debe ingresar una opcion valida");
+                    break;
+            }
+        }
     }
+    
 }
 

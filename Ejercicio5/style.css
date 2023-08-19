@@ -11,10 +11,17 @@ label{
 }
 
 input{
+    display: flexbox;
     margin-bottom: 3px;
     border-radius: 5px;
 }
 
 button{
-    margin: 10px;
+    background-color: #000;
+    color: #fff;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 1.5);
 }
